@@ -9,5 +9,120 @@
   <h1>Hello.</h1>
   <p>This is my starting point.</p>
 
+  ----------------------- QUESTIONS ---------------------------
+  <!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Find Your Song</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+    }
+
+    h1 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      background: black;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #333;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Answer these questions</h1>
+    <p>and I'll give you a song + a Pinterest image</p>
+
+```
+<form id="quizForm">
+
+  <label>What's your mood?</label>
+  <select>
+    <option>Happy</option>
+    <option>Sad</option>
+    <option>Chaotic</option>
+    <option>Romantic</option>
+  </select>
+
+  <label>Pick a time of day:</label>
+  <select>
+    <option>Morning</option>
+    <option>Afternoon</option>
+    <option>Night</option>
+  </select>
+
+  <label>Favorite color vibe?</label>
+  <select>
+    <option>Warm</option>
+    <option>Cool</option>
+    <option>Dark</option>
+    <option>Soft</option>
+  </select>
+
+  <button type="button" onclick="showResult()">Get my result</button>
+
+</form>
+
+<div id="result" style="margin-top:20px;"></div>
+```
+
+  </div>
+
+  <script>
+    function showResult() {
+      let result = document.getElementById("result");
+
+      result.innerHTML = `
+        <p><strong>Your song:</strong> (you'll add this)</p>
+        <p><strong>Your image:</strong></p>
+        <img src="https://via.placeholder.com/200" width="100%">
+      `;
+    }
+  </script>
+
+</body>
+</html>
+
+
 </body>
 </html>
