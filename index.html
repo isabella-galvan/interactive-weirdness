@@ -138,7 +138,44 @@
     }
   </script>
 
-<!------------------------------------------------------>
+<!------------------------------------------ ANSWERS ------------------------------------------>
+  <script>
+  function showResult() {
+    
+    const snack = document.querySelectorAll('#questions select')[0].value;
+    const vacation = document.querySelectorAll('#questions select')[1].value;
+    const interest = document.querySelectorAll('#questions select')[2].value;
+    const question = document.querySelectorAll('#questions input')[0].value.toLowerCase();
+
+    let song = "";
+    let image = "";
+    let answer = "";
+
+    // Example logic: check all answers to decide
+    if (snack === "Dirt N Worms (the dessert, duh)" && vacation === "Berlin" && interest === "The Titanic") {
+      // If all three match specific choices
+      song = `<iframe src="YOUR_BEST_CHOICE_YOUTUBE_LINK" width="560" height="315" allowfullscreen></iframe>`;
+      image = "YOUR_BEST_CHOICE_IMAGE_URL";
+      answer = "This is the perfect combo!";
+    } else {
+      // Default
+      song = `<iframe src="DEFAULT_YOUTUBE_LINK" width="560" height="315" allowfullscreen></iframe>`;
+      image = "DEFAULT_IMAGE_URL";
+      answer = "Here's a random result!";
+    }
+
+    // You can add more conditions for different combinations if you want
+
+    // Show the result
+    document.getElementById("result").innerHTML = `
+      <p><strong>Your song:</strong></p>
+      ${song}
+      <p><strong>Your image:</strong></p>
+      <img src="${image}" width="100%">
+      <p><strong>Your Answer:</strong> ${answer}</p>
+    `;
+  }
+</script>
 
 
 </body>
