@@ -139,32 +139,66 @@
   </script>
 
 <!------------------------------------------ ANSWERS ------------------------------------------>
-  <script>
+ <script>
   function showResult() {
-    
-    const snack = document.querySelectorAll('#questions select')[0].value;
-    const vacation = document.querySelectorAll('#questions select')[1].value;
-    const interest = document.querySelectorAll('#questions select')[2].value;
-    const question = document.querySelectorAll('#questions input')[0].value.toLowerCase();
+    const selects = document.querySelectorAll('#questions select');
+    const answer1 = selects[0].value; // snack time!
+    const answer2 = selects[1].value; // vacation
+    const answer3 = selects[2].value; // interest
+    const question = document.querySelector('#questions input').value.toLowerCase();
 
     let song = "";
     let image = "";
-    let answer = "";
+    let message = "";
 
-    // Example logic: check all answers to decide
-    if (snack === "Dirt N Worms (the dessert, duh)" && vacation === "Berlin" && interest === "The Titanic") {
-      // If all three match specific choices
-      song = `<iframe src="YOUR_BEST_CHOICE_YOUTUBE_LINK" width="560" height="315" allowfullscreen></iframe>`;
-      image = "YOUR_BEST_CHOICE_IMAGE_URL";
-      answer = "This is the perfect combo!";
-    } else {
-      // Default
-      song = `<iframe src="DEFAULT_YOUTUBE_LINK" width="560" height="315" allowfullscreen></iframe>`;
-      image = "DEFAULT_IMAGE_URL";
-      answer = "Here's a random result!";
+    // COMBINATION 1
+    
+    if (answer1 === "Dirt N Worms (the dessert, duh)" && answer2 === "Berlin") {
+      
+      // RESULT 1
+      
+      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https:/
+      /open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg?utm_source=generator&theme=0" 
+      width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
+      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
+      message = "Reply hazy, try again";
     }
 
-    // You can add more conditions for different combinations if you want
+    // COMBINATION 2
+      
+    else if (answer1 === "Crunchy Green Grapes" && answer2 === "Mexico City") {
+
+      // RESULT 2
+      
+      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" 
+      src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG?utm_source=generator" 
+      width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
+      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
+      message = "Without a doubt";
+
+      // COMBINATION 3
+      
+      
+    else if (answer1 === "Scooby Doo Gummies (but only the blue ones)" && answer2 === "Bondi") {
+
+      // RESULT 3
+      
+      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" 
+      src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b?utm_source=generator"
+      width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write;
+      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+      image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+      message = "My sources say no";
+      
+   
+    } else {
+      // Default result
+      song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="560" height="315" allowfullscreen></iframe>`;
+      image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+      message = "Explore your unique taste!";
+    }
 
     // Show the result
     document.getElementById("result").innerHTML = `
@@ -172,7 +206,7 @@
       ${song}
       <p><strong>Your image:</strong></p>
       <img src="${image}" width="100%">
-      <p><strong>Your Answer:</strong> ${answer}</p>
+      <p><strong>Your answer:</strong> ${message}</p>
     `;
   }
 </script>
