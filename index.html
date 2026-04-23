@@ -12,186 +12,106 @@
 <br>a picture from my Pinterest,
     <br>and an answer to a question.</h1>
 
-
- <!------------------- QUESTIONS --------------------------->
-
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      background: white;
-      padding: 30px;
-      border-radius: 15px;
-      width: 300px;
-    }
-
-    h1 {
-      font-size: 20px;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      display: block;
-      margin-top: 10px;
-    }
-
-    button {
-      margin-top: 20px;
-      padding: 10px;
-      width: 100%;
-      border: none;
-      background: black;
-      color: white;
-    
-    }
-
-    button:hover {
-      background: #333;
-    }
-  </style>
-
-</head>
-
-<body>
-
   <div class="container">
 
+    ꒰ ﹒ ⋆ ꩜ ⋆ 𓂃 ₊ ⊹ ₊ 𓂃 ⋆ ꩜ ⋆ ﹒ ꒱
 
-꒰ ﹒ ⋆ ꩜ ⋆ 𓂃 ₊ ⊹ ₊ 𓂃 ⋆ ꩜ ⋆ ﹒ ꒱
-    
-    
-<form id="questions">
-<!------------------------------------------Q1------------------------------------------>
-  <label>Snack Time!</label>
-  <select>
-    <option>                    </option>
-    <option>Crunchy Green Grapes</option>
-    <option>Dirt N Worms (the dessert, duh)</option>
-    <option>Scooby Doo Gummies (but only the blue ones)</option>
-    <option>Tomato Soup & Goldfish</option>
-  </select>
-<!------------------------------------------Q2------------------------------------------>
-  <label>You're going on vacation. Where to?</label>
-  <select>
-     <option>           </option>
-    <option>Mexico City</option>
-      <option>Berlin</option>
-    <option>Goa</option>
-    <option>Bondi</option>
-  </select>
-<!------------------------------------------Q3------------------------------------------>
-  <label>Pick one of my childhood interests.</label>
-  <select>
-     <option>           </option>
-    <option>The Titanic</option>
-     <option>One Direction</option>
-    <option>Ancient Egyptian Mummies</option>
-    <option>1950's Musicals</option>
-  </select>
-<!------------------------------------------Q4------------------------------------------>
- <label>Ask any question:</label> 
-  <input type="text" placeholder="asking the magic 8ball...">
+    <form id="questions">
+      <!-- Q1 -->
+      <label>Snack Time!</label>
+      <select>
+        <option></option>
+        <option>Crunchy Green Grapes</option>
+        <option>Dirt N Worms (the dessert, duh)</option>
+        <option>Scooby Doo Gummies (but only the blue ones)</option>
+        <option>Tomato Soup & Goldfish</option>
+      </select>
 
+      <!-- Q2 -->
+      <label>You're going on vacation. Where to?</label>
+      <select>
+        <option></option>
+        <option>Mexico City</option>
+        <option>Berlin</option>
+        <option>Goa</option>
+        <option>Bondi</option>
+      </select>
 
-  <button type="button" onclick="showResult()">hm...</button>
+      <!-- Q3 -->
+      <label>Pick one of my childhood interests.</label>
+      <select>
+        <option></option>
+        <option>The Titanic</option>
+        <option>One Direction</option>
+        <option>Ancient Egyptian Mummies</option>
+        <option>1950's Musicals</option>
+      </select>
 
-</form>
+      <!-- Q4 -->
+      <label>Ask any question:</label>
+      <input type="text" placeholder="asking the magic 8ball...">
 
-<div id="result" style="margin-top:20px;"></div>
-    
-    
-꒰ ﹒ ⋆ ꩜ ⋆ 𓂃 ₊ ⊹ ₊ 𓂃 ⋆ ꩜ ⋆ ﹒ ꒱
+      <button type="button" onclick="showResult()">hm...</button>
+    </form>
+
+    <div id="result" style="margin-top:20px;"></div>
+
+    ꒰ ﹒ ⋆ ꩜ ⋆ 𓂃 ₊ ⊹ ₊ 𓂃 ⋆ ꩜ ⋆ ﹒ ꒱
 
   </div>
 
-<!------------------------------------------ ANSWERS ------------------------------------------>
- <script>
-  function showResult() {
-    const selects = document.querySelectorAll('#questions select');
-    const answer1 = selects[0].value; // snack time!
-    const answer2 = selects[1].value; // vacation
-    const answer3 = selects[2].value; // interest
-    const question = document.querySelector('#questions input').value.toLowerCase();
+  <script>
+    function showResult() {
+      const selects = document.querySelectorAll('#questions select');
+      const answer1 = selects[0].value; // snack
+      const answer2 = selects[1].value; // vacation
+      const answer3 = selects[2].value; // interest
+      const question = document.querySelector('#questions input').value.toLowerCase();
 
-    let song = "";
-    let image = "";
-    let message = "";
+      let song = "";
+      let image = "";
+      let message = "";
 
-    // COMBINATION 1
-    
-    if (answer1 === "Dirt N Worms (the dessert, duh)" && answer2 === "Berlin") {
-      
-      // RESULT 1
-      
-      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https:/
-      /open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg?utm_source=generator&theme=0" 
-      width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
-      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-      image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
-      message = "Reply hazy, try again";
-    }
+      // COMBINATION 1
+      if (answer1 === "Dirt N Worms (the dessert, duh)" && answer2 === "Berlin") {
+        // RESULT 1
+        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+        image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
+        message = "Reply hazy, try again";
+      }
 
-    // COMBINATION 2
-      
-    else if (answer1 === "Crunchy Green Grapes" && answer2 === "Mexico City") {
-
-      // RESULT 2
-      
-      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG?utm_source=generator" 
-      width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; 
-      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-      image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
-      message = "Without a doubt";
+      // COMBINATION 2
+      if (answer1 === "Crunchy Green Grapes" && answer2 === "Mexico City") {
+        // RESULT 2
+        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+        image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
+        message = "Without a doubt";
+      }
 
       // COMBINATION 3
-      
-      
-    else if (answer1 === "Scooby Doo Gummies (but only the blue ones)" && answer2 === "Bondi") {
+      if (answer1 === "Scooby Doo Gummies (but only the blue ones)" && answer2 === "Bondi") {
+        // RESULT 3
+        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+        image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+        message = "My sources say no";
+      }
 
-      // RESULT 3
-      
-      song = `<iframe data-testid="embed-iframe" style="border-radius:12px" 
-      src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b?utm_source=generator"
-      width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write;
-      encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-      image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
-      message = "My sources say no";
-    }
-
-    
-    else {
       // DEFAULT
-      song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="560" height="315" allowfullscreen></iframe>`;
-      image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
-      message = "Explore your unique taste!";
+      else {
+        song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="560" height="315" allowfullscreen></iframe>`;
+        image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+        message = "Explore your unique taste!";
+      }
+
+      // SHOW
+      document.getElementById("result").innerHTML = `
+        <p><strong>Your song:</strong></p>
+        ${song}
+        <p><strong>Your image:</strong></p>
+        <img src="${image}" width="100%">
+        <p><strong>Your answer:</strong> ${message}</p>
+      `;
     }
-
-    // SHOW
-    document.getElementById("result").innerHTML = `
-      <p><strong>Your song:</strong></p>
-      ${song}
-      <p><strong>Your image:</strong></p>
-      <img src="${image}" width="100%">
-      <p><strong>Your answer:</strong> ${message}</p>
-    `;
-  }
-</script>
-
-
+  </script>
 </body>
 </html>
