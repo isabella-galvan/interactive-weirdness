@@ -2,6 +2,12 @@
   display: none;
   margin-top: 20px;
   text-align: center;
+  padding-top: 10px;
+
+  /* ✨ fade-in reveal */
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s ease;
 }
 
 /* when JS adds this class, result replaces form visually */
@@ -11,13 +17,11 @@
 
 .container.show-result #result {
   display: block;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* MAGIC 8-BALL STYLE */
-#result {
-  padding-top: 10px;
-}
-
 .ball {
   width: 180px;
   height: 180px;
@@ -26,6 +30,13 @@
   border-radius: 50%;
   position: relative;
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+
+  /* default state (no constant shaking) */
+}
+
+/* shake ONLY when result appears */
+.container.show-result .ball {
+  animation: shake 0.6s ease;
 }
 
 /* triangle inside 8-ball */
@@ -40,6 +51,15 @@
   border-left: 35px solid transparent;
   border-right: 35px solid transparent;
   border-bottom: 60px solid #1e90ff;
+
+  /* 💡 subtle glow */
+  filter: drop-shadow(0 0 6px #1e90ff);
+  transition: all 0.4s ease;
+}
+
+/* glow intensifies when result shows */
+.container.show-result .ball::before {
+  filter: drop-shadow(0 0 12px #1e90ff);
 }
 
 /* message inside ball */
@@ -52,9 +72,14 @@
   font-size: 13px;
   width: 120px;
   text-align: center;
+  opacity: 0;
+
+  /* ✨ delayed reveal */
+  animation: messageFade 0.8s ease forwards;
+  animation-delay: 0.4s;
 }
 
-/* shake animation (CSS-only visual) */
+/* shake animation */
 @keyframes shake {
   0% { transform: rotate(0deg); }
   25% { transform: rotate(4deg); }
@@ -63,8 +88,16 @@
   100% { transform: rotate(0deg); }
 }
 
-.ball {
-  animation: shake 0.6s ease;
+/* ✨ message appears like it's “manifesting” */
+@keyframes messageFade {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
 }
 
 /* media styling */
