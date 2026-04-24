@@ -1,99 +1,76 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  margin: 0;
-  padding: 40px 0;
-  overflow-y: auto;
-}
-
-.container {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-  font-size: 20px;
-  margin-bottom: 10px;
+#result {
+  display: none;
+  margin-top: 20px;
   text-align: center;
 }
 
-p {
-  font-size: 14px;
-  margin-bottom: 20px;
+/* when JS adds this class, result replaces form visually */
+.container.show-result form {
+  display: none;
 }
 
-label {
+.container.show-result #result {
   display: block;
-  margin-top: 10px;
-  font-weight: bold;
 }
 
-select, input[type="text"] {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-
-button {
-  margin-top: 20px;
-  padding: 10px;
-  width: 100%;
-  border: none;
-  background: black;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-button:hover {
-  background: #333;
-}
-
-
+/* MAGIC 8-BALL STYLE */
 #result {
-  margin-top: 25px;
-  padding-top: 20px;
-  border-top: 1px solid #e0e0e0;
-
- 
-  min-height: 220px;
-
-
-  animation: fadeIn 0.4s ease-in;
+  padding-top: 10px;
 }
 
+.ball {
+  width: 180px;
+  height: 180px;
+  margin: 20px auto;
+  background: black;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+}
 
-#result iframe {
+/* triangle inside 8-ball */
+.ball::before {
+  content: "";
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 35px solid transparent;
+  border-right: 35px solid transparent;
+  border-bottom: 60px solid #1e90ff;
+}
+
+/* message inside ball */
+#message {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 13px;
+  width: 120px;
+  text-align: center;
+}
+
+/* shake animation (CSS-only visual) */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(4deg); }
+  50% { transform: rotate(-4deg); }
+  75% { transform: rotate(4deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.ball {
+  animation: shake 0.6s ease;
+}
+
+/* media styling */
+#media iframe,
+#media img {
   width: 100%;
   border-radius: 12px;
-}
-
-
-#result img {
-  width: 100%;
-  margin-top: 10px;
-  border-radius: 10px;
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  margin-top: 15px;
 }
