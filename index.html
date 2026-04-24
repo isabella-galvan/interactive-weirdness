@@ -60,58 +60,100 @@
 
   </div>
 
-  <script>
-    function showResult() {
-      const selects = document.querySelectorAll('#questions select');
-      const answer1 = selects[0].value; // snack
-      const answer2 = selects[1].value; // vacation
-      const answer3 = selects[2].value; // interest
-      const question = document.querySelector('#questions input').value.toLowerCase();
+ <script>
+function showResult() {
+  const selects = document.querySelectorAll('#questions select');
+  const answer1 = selects[0].value;
+  const answer2 = selects[1].value;
+  const answer3 = selects[2].value;
+  const question = document.querySelector('#questions input').value.toLowerCase();
 
-      let song = "";
-      let image = "";
-      let message = "";
+  // PERSONALITY SCORES
+  let traits = {
+    dreamy: 0,
+    chaotic: 0,
+    nostalgic: 0,
+    grounded: 0,
+    romantic: 0
+  };
 
-      // COMBINATION 1
-      if (answer1 === "Dirt N Worms (the dessert, duh)" && answer2 === "Berlin") {
-        // RESULT 1
-        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-        image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
-        message = "Reply hazy, try again";
-      }
+  // SCORING SYSTEM
 
-      // COMBINATION 2
-      if (answer1 === "Crunchy Green Grapes" && answer2 === "Mexico City") {
-        // RESULT 2
-        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG?utm_source=generator" width="100%" height="152" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-        image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
-        message = "Without a doubt";
-      }
+  // Snack
+  if (answer1.includes("Grapes")) traits.grounded += 2;
+  if (answer1.includes("Dirt")) traits.chaotic += 2;
+  if (answer1.includes("Scooby")) traits.nostalgic += 2;
+  if (answer1.includes("Tomato")) traits.cozy = (traits.cozy || 0) + 2;
 
-      // COMBINATION 3
-      if (answer1 === "Scooby Doo Gummies (but only the blue ones)" && answer2 === "Bondi") {
-        // RESULT 3
-        song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
-        image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
-        message = "My sources say no";
-      }
+  // Vacation
+  if (answer2 === "Berlin") traits.chaotic += 1;
+  if (answer2 === "Mexico City") traits.romantic += 2;
+  if (answer2 === "Goa") traits.dreamy += 2;
+  if (answer2 === "Bondi") traits.grounded += 1;
 
-      // DEFAULT
-      else {
-        song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="560" height="315" allowfullscreen></iframe>`;
-        image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
-        message = "Explore your unique taste!";
-      }
+  // Interest
+  if (answer3.includes("Titanic")) traits.romantic += 2;
+  if (answer3.includes("One Direction")) traits.nostalgic += 2;
+  if (answer3.includes("Mummies")) traits.chaotic += 1;
+  if (answer3.includes("Musicals")) traits.dreamy += 1;
 
-      // SHOW
-      document.getElementById("result").innerHTML = `
-        <p><strong>Your song:</strong></p>
-        ${song}
-        <p><strong>Your image:</strong></p>
-        <img src="${image}" width="100%">
-        <p><strong>Your answer:</strong> ${message}</p>
-      `;
-    }
-  </script>
+  // FIND DOMINANT TRAIT
+  let dominant = Object.keys(traits).reduce((a, b) =>
+    traits[a] > traits[b] ? a : b
+  );
+
+  let song = "";
+  let image = "";
+  let message = "";
+
+  // RESULTS BASED ON PERSONALITY
+
+  if (dominant === "dreamy") {
+    song = `<iframe src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG" width="100%" height="152"></iframe>`;
+    image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
+    message = "You’re drifting toward something… don’t rush it.";
+  }
+
+  else if (dominant === "chaotic") {
+    song = `<iframe src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg" width="100%" height="152"></iframe>`;
+    image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
+    message = "Reply hazy… but you already knew that.";
+  }
+
+  else if (dominant === "nostalgic") {
+    song = `<iframe src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b" width="100%" height="352"></iframe>`;
+    image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+    message = "You’re holding onto something for a reason.";
+  }
+
+  else if (dominant === "romantic") {
+    song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="100%" height="315"></iframe>`;
+    image = "https://i.pinimg.com/1200x/cc/77/aa/cc77aa.jpg";
+    message = "Without a doubt.";
+  }
+
+  else {
+    song = `<iframe src="https://www.youtube.com/embed/lYBIRHi5-o8" width="100%" height="315"></iframe>`;
+    image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
+    message = "You’re harder to pin down than you think.";
+  }
+
+  // MAGIC 8 BALL TWIST (reacts to their question)
+  if (question.includes("love")) {
+    message += " …especially when it comes to love.";
+  } else if (question.includes("future")) {
+    message += " The future’s blurry on purpose.";
+  }
+
+  document.getElementById("result").innerHTML = `
+    <p><strong>Your vibe:</strong> ${dominant}</p>
+    <p><strong>Your song:</strong></p>
+    ${song}
+    <p><strong>Your image:</strong></p>
+    <img src="${image}" width="100%">
+    <p><strong>Your answer:</strong> ${message}</p>
+  `;
+}
+</script>
 </body>
 </html>
