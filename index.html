@@ -14,48 +14,16 @@
 
   <div class="container">
 
+──────────────────────────────
 ────────────────────────────
     <form id="questions">
       <!-- Q1 -->
       <label>Snack Time!</label>
-      <select>
-        <option></option>
-        <option>Crunchy Green Grapes</option>
-        <option>Dirt N Worms (the dessert, duh)</option>
-        <option>Scooby Doo Gummies (but only the blue ones)</option>
-        <option>Tomato Soup & Goldfish</option>
-      </select>
-
-      <!-- Q2 -->
-      <label>You're going on vacation. Where to?</label>
-      <select>
-        <option></option>
-        <option>Mexico City</option>
-        <option>Berlin</option>
-        <option>Goa</option>
-        <option>Bondi</option>
-      </select>
-
-      <!-- Q3 -->
-      <label>Pick one of my childhood interests.</label>
-      <select>
-        <option></option>
-        <option>The Titanic</option>
-        <option>One Direction</option>
-        <option>Ancient Egyptian Mummies</option>
-        <option>1950's Musicals</option>
-      </select>
-
-      <!-- Q4 -->
-      <label>Ask a yes or no question:</label>
-      <input type="text" placeholder="asking the magic 8ball...">
-
-     <button type="button" onclick="showResult()">over it</button>
-    </form>
-
+@@ -56,98 +56,98 @@
     <div id="result" style="margin-top:20px;"></div>
 
 
+──────────────────────────────
 ────────────────────────────
 
   </div>
@@ -67,45 +35,6 @@ function showResult() {
   const answer2 = selects[1].value;
   const answer3 = selects[2].value;
   const question = document.querySelector('#questions input').value.toLowerCase();
-
-  let song = "";
-  let image = "";
-  let message = "";
-
-  // ⭐ SPECIAL COMBOS (BuzzFeed-style overrides FIRST)
-
-  if (
-    answer1.includes("Grapes") &&
-    answer2 === "Mexico City" &&
-    answer3.includes("Titanic")
-  ) {
-    song = `<iframe src="https://open.spotify.com/embed/track/21ypdslAhK5dhLuHXIYIfG" width="100%" height="152"></iframe>`;
-    image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
-    message = "You are the Main Character in a soft tragedy.";
-    return showFinal();
-  }
-
-  if (
-    answer1.includes("Scooby") &&
-    answer2 === "Bondi" &&
-    answer3.includes("One Direction")
-  ) {
-    song = `<iframe src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b" width="100%" height="352"></iframe>`;
-    image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
-    message = "You are pure chaotic beach nostalgia energy.";
-    return showFinal();
-  }
-
-  if (
-    answer1.includes("Dirt") &&
-    answer2 === "Berlin" &&
-    answer3.includes("Musicals")
-  ) {
-    song = `<iframe src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg" width="100%" height="152"></iframe>`;
-    image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
-    message = "You are an underground side character in a dystopian musical.";
-    return showFinal();
-  }
 
   // trait selection
   let traits = {
@@ -140,6 +69,10 @@ function showResult() {
     traits[a] > traits[b] ? a : b
   );
 
+  let song = "";
+  let image = "";
+  let message = "";
+
   // FINAL RESULTS!!!!
 
   if (dominant === "chill") {
@@ -147,26 +80,26 @@ function showResult() {
     image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
     message = "Reply hazy, try again";
   }
-
+//------------------------------------------------------------------------------------------------------------------
   else if (dominant === "cool") {
     song = `<iframe src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg" width="100%" height="152"></iframe>`;
     image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
-    message = "Don't count on it";
+    message = " Don't count on it";
   }
-
+//------------------------------------------------------------------------------------------------------------------
   else if (dominant === "beachy") {
     song = `<iframe src="https://open.spotify.com/embed/track/5K6fJf9l8WTsscngGert0b" width="100%" height="352"></iframe>`;
     image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
     message = "Without a doubt";
   }
-
+//------------------------------------------------------------------------------------------------------------------
   else if (dominant === "cozy") {
     song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4KROoGIaPaR1pBHPnR3bwC?utm_source=generator"
     width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
     image = "https://i.pinimg.com/736x/85/fc/60/85fc60f25d97542c03e3724928d314ac.jpg";
     message = "Signs point to yes";
   }
-
+//------------------------------------------------------------------------------------------------------------------
   else {
     song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0HDaKOlVAfUWXdFR2RhBtN?utm_source=generator" width="100%"
     height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
@@ -174,11 +107,7 @@ function showResult() {
     message = "My sources say no";
   }
 
-  showFinal();
-}
-
-// ⭐ result renderer (must be OUTSIDE showResult)
-function showFinal() {
+  // get result
   document.getElementById("result").innerHTML = `
     <p><strong>your song:</strong></p>
     ${song}
