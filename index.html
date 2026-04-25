@@ -51,7 +51,8 @@
       <label>Ask any question:</label>
       <input type="text" placeholder="asking the magic 8ball...">
 
-      <button type="button" onclick="showResult()">km$</button>
+      <button type="button" onclick="showResult()">hellow</button>
+      <button type="button" onclick="showResult()">work pleeeeese</button>
     </form>
 
     <div id="result" style="margin-top:20px;"></div>
@@ -140,25 +141,13 @@ function showResult() {
   }
 
   // get result
-// get result
-document.getElementById("result").innerHTML = `
-  <div class="ball">
-    <div id="message">${message}</div>
-  </div>
-
-  <div id="media">
+  document.getElementById("result").innerHTML = `
     <p><strong>your song:</strong></p>
     ${song}
-
     <p><strong>your image:</strong></p>
     <img src="${image}" width="100%">
-
     <p><strong>your answer:</strong> ${message}</p>
-  </div>
-`;
-
-document.querySelector(".container").classList.add("show-result");
-
+  `;
 }
 </script>
 </body>
