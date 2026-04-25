@@ -140,13 +140,21 @@ function showResult() {
   }
 
   // get result
-  document.getElementById("result").innerHTML = `
+ document.getElementById("result").innerHTML = `
+  <div class="ball">
+    <div id="message">${message}</div>
+  </div>
+
+  <div id="media">
     <p><strong>your song:</strong></p>
     ${song}
+
     <p><strong>your image:</strong></p>
     <img src="${image}" width="100%">
+
     <p><strong>your answer:</strong> ${message}</p>
-  `;
+  </div>
+`;
 }
 </script>
 </body>
