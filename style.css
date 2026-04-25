@@ -18,7 +18,7 @@ body {
 
 /* main container */
 .container {
-  background: rgba(25, 18, 45, 0.75);
+  background: rgba(25, 18, 79, 0.75);
   backdrop-filter: blur(8px);
 
   padding: 30px;
