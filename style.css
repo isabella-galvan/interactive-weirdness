@@ -53,13 +53,25 @@ input[type="text"] {
   padding: 10px;
   margin-top: 6px;
 
-  border-radius: 8px;
-  border: 1px solid #333;
+  border-radius: 10px;
 
-  background: #111;
+  background: rgba(255, 255, 255, 0.08);
   color: white;
 
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
   box-sizing: border-box;
+
+  backdrop-filter: blur(4px);
+
+  outline: none;
+
+  transition: all 0.2s ease;
+}
+select:focus,
+input[type="text"]:focus {
+  border: 1px solid rgba(160, 120, 255, 0.6);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* buttons */
@@ -68,23 +80,24 @@ button {
   padding: 12px;
   width: 100%;
 
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 10px;
 
-  background: #000;
+  background: rgba(160, 120, 255, 0.15);
   color: white;
 
   font-size: 15px;
   cursor: pointer;
 
   transition: 0.2s ease;
+  backdrop-filter: blur(4px);
 }
 
 button:hover {
   transform: scale(1.02);
-  background: #111;
+  background: rgba(160, 120, 255, 0.28);
+  border: 1px solid rgba(160, 120, 255, 0.4);
 }
-
 /* result area */
 #result {
   margin-top: 20px;
