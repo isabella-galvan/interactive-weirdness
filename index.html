@@ -7,16 +7,19 @@
 
 <body>
 
-  <h1>Answer these questions and  
- <br>I'll give you a song,  
-<br>a picture from my Pinterest,
-    <br>and an answer to a question.</h1>
+  <h1>
+    Answer these questions and<br>
+    I'll give you a song,<br>
+    a picture from my Pinterest,<br>
+    and an answer to a question.
+  </h1>
 
   <div class="container">
 
+    ────────────────────────────
 
-────────────────────────────
     <form id="questions">
+
       <!-- Q1 -->
       <label>Snack Time!</label>
       <select>
@@ -51,14 +54,15 @@
       <label>Ask a yes or no question:</label>
       <input type="text" placeholder="asking the magic 8ball...">
 
-     <button type="button" onclick="showResult()">Discover your fate...</button>
+      <button type="button" onclick="showResult()">
+        Discover your fate...
+      </button>
+
     </form>
 
     <div id="result" style="margin-top:20px;"></div>
 
-
-
-────────────────────────────
+    ────────────────────────────
 
   </div>
 
@@ -114,27 +118,31 @@ function showResult() {
     image = "https://i.pinimg.com/1200x/b1/24/2c/b1242c191b00e825b108341ed4ab5770.jpg";
     message = "Reply hazy, try again";
   }
-//------------------------------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------------------------
   else if (dominant === "cool") {
     song = `<iframe src="https://open.spotify.com/embed/track/7uv632EkfwYhXoqf8rhYrg" width="100%" height="152"></iframe>`;
     image = "https://i.pinimg.com/1200x/6d/25/6f/6d256fb3abacc75e780c7d55a6c127e0.jpg";
     message = " Don't count on it";
   }
-//------------------------------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------------------------
   else if (dominant === "beachy") {
     song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0HDaKOlVAfUWXdFR2RhBtN?utm_source=generator" width="100%"
     height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
     image = "https://i.pinimg.com/1200x/a9/9f/4e/a99f4e88cad4fdd3d41c6ea81cb5be28.jpg";
     message = "Without a doubt";
   }
-//------------------------------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------------------------
   else if (dominant === "cozy") {
     song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/4KROoGIaPaR1pBHPnR3bwC?utm_source=generator"
     width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
     image = "https://i.pinimg.com/736x/85/fc/60/85fc60f25d97542c03e3724928d314ac.jpg";
     message = "Signs point to yes";
   }
-//------------------------------------------------------------------------------------------------------------------
+
+  //------------------------------------------------------------------------------------------------------------------
   else {
     song = `<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/0HDaKOlVAfUWXdFR2RhBtN?utm_source=generator" width="100%"
     height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
@@ -152,5 +160,6 @@ function showResult() {
   `;
 }
 </script>
+
 </body>
 </html>
