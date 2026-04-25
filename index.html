@@ -140,7 +140,8 @@ function showResult() {
   }
 
   // get result
- document.getElementById("result").innerHTML = `
+// get result
+document.getElementById("result").innerHTML = `
   <div class="ball">
     <div id="message">${message}</div>
   </div>
@@ -155,6 +156,9 @@ function showResult() {
     <p><strong>your answer:</strong> ${message}</p>
   </div>
 `;
+
+document.querySelector(".container").classList.add("show-result");
+
 }
 </script>
 </body>
